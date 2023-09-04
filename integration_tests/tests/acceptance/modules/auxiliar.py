@@ -1,14 +1,3 @@
-from ast import literal_eval
-
-
-def convert_string_to_object(value):
-    """Cast a string to an object."""
-    try:
-        return literal_eval(value)
-    except ValueError:
-        return value
-
-
 def parse_behave_table(context_table):
     """Cast behave's table to a dict."""
     return next(
@@ -19,10 +8,7 @@ def parse_behave_table(context_table):
 def cast_table_to_dict(context_table):
     """Cast behave tables into dicts with types."""
     dict_with_strings = parse_behave_table(context_table)
-    return {
-        key: convert_string_to_object(value)
-        for key, value in dict_with_strings.items()
-    }
+    return dict_with_strings
 
 
 def cast_table_with_one_column_to_list(context_table):

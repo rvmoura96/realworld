@@ -6,10 +6,14 @@ from expects import equal, expect
 from modules.auxiliar import cast_table_to_dict
 from pages_objects.pos import Home, Logged, SignUp
 
+
 @given("a user data")
 def step_impl(context):
-    context.user = cast_table_to_dict(context.table)
-
+    context.user = {
+        "first_name": f"{context.faker.name()}{context.faker.name()}",
+        "email": context.faker.email(),
+        "password": context.faker.password()
+    }
 
 @when("the user access the platform")
 def step_impl(context):
@@ -18,15 +22,13 @@ def step_impl(context):
 
 @when("click on sign up")
 def step_impl(context):
-    sleep(1)
+    sleep(2)
     home_po = Home(context.driver)
     home_po.sign_up.click()
 
 
-@when("the user form is filled with user data")
+@when("the user form is filled with user data and submit")
 def step_impl(context):
-    context.user["password"] = context.faker.password()
-
     sign_up_po = SignUp(context.driver)
     sleep(2)
     sign_up_po.name.send_keys(context.user["first_name"])
