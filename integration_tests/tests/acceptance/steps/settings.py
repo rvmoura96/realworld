@@ -7,14 +7,14 @@ from modules.auxiliar import cast_table_to_dict
 from pages_objects.pos import Home, Logged, Settings, SignUp
 
 
-@when(u'the user click on settings')
+@when("the user click on settings")
 def step_impl(context):
     sleep(2)
     logged_po = Logged(context.driver)
     logged_po.settings_link.click()
 
 
-@then(u'the user name should be visible at the name input')
+@then("the user name should be visible at the name input")
 def step_impl(context):
     sleep(2)
     settings_po = Settings(context.driver)
@@ -23,7 +23,7 @@ def step_impl(context):
     expect(expected).to(equal(result))
 
 
-@then(u'the user email should be visible at the email input')
+@then("the user email should be visible at the email input")
 def step_impl(context):
     sleep(2)
     settings_po = Settings(context.driver)
@@ -32,14 +32,14 @@ def step_impl(context):
     expect(expected).to(equal(result))
 
 
-@when(u'click on Logout')
+@when("click on Logout")
 def step_impl(context):
     sleep(5)
     settings_po = Settings(context.driver)
     settings_po.logout.click()
 
 
-@then(u'the sign up button should be visible.')
+@then("the sign up button should be visible.")
 def step_impl(context):
     sleep(5)
     home_po = Home(context.driver)
@@ -48,27 +48,28 @@ def step_impl(context):
     expect(expected).to(equal(result))
 
 
-@when(u'add "{bio_content}" on bio field')
+@when('add "{bio_content}" on bio field')
 def step_impl(context, bio_content):
     sleep(2)
     settings_po = Settings(context.driver)
     settings_po.bio.send_keys(bio_content)
 
 
-@when(u'click in update settings')
+@when("click in update settings")
 def step_impl(context):
     sleep(2)
     settings_po = Settings(context.driver)
     settings_po.update_button.click()
 
-@when(u'click on home')
+
+@when("click on home")
 def step_impl(context):
     sleep(2)
     settings_po = Settings(context.driver)
     settings_po.home.click()
 
 
-@then(u'the bio value should be "{bio_content}"')
+@then('the bio value should be "{bio_content}"')
 def step_impl(context, bio_content):
     sleep(2)
     settings_po = Settings(context.driver)

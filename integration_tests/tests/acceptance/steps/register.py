@@ -12,8 +12,9 @@ def step_impl(context):
     context.user = {
         "first_name": f"{context.faker.name()}{context.faker.name()}",
         "email": context.faker.email(),
-        "password": context.faker.password()
+        "password": context.faker.password(),
     }
+
 
 @when("the user access the platform")
 def step_impl(context):
@@ -46,7 +47,8 @@ def step_impl(context):
     result = logged_page.user_link.is_displayed()
     expect(expected).to(equal(result))
 
-@then(u'an error message should be showed')
+
+@then("an error message should be showed")
 def step_impl(context):
     sleep(5)
     sign_up_po = SignUp(context.driver)

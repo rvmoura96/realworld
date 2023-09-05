@@ -4,21 +4,29 @@ from behave import given, then, when
 from expects import equal, expect
 
 from modules.auxiliar import cast_table_to_dict
-from pages_objects.pos import ArticleDetails, CreateArticle, Home, Logged, Settings, SignUp
+from pages_objects.pos import (
+    ArticleDetails,
+    CreateArticle,
+    Home,
+    Logged,
+    Settings,
+    SignUp,
+)
 
 
-@given(u'an article data')
+@given("an article data")
 def step_impl(context):
     context.article = cast_table_to_dict(context.table)
 
 
-@when(u'the user click on new post')
+@when("the user click on new post")
 def step_impl(context):
     sleep(5)
     ca_po = CreateArticle(context.driver)
     ca_po.new_post.click()
 
-@when(u'fill article fields with the given data and submit')
+
+@when("fill article fields with the given data and submit")
 def step_impl(context):
     sleep(2)
     ca_po = CreateArticle(context.driver)
@@ -29,7 +37,7 @@ def step_impl(context):
     ca_po.publish.click()
 
 
-@then(u'the current url should contains "{slugged_title}"')
+@then('the current url should contains "{slugged_title}"')
 def step_impl(context, slugged_title):
     sleep(2)
     ca_po = CreateArticle(context.driver)
@@ -39,7 +47,7 @@ def step_impl(context, slugged_title):
     expect(expected).to(equal(result))
 
 
-@then(u'the current url should not contains "{slugged_title}"')
+@then('the current url should not contains "{slugged_title}"')
 def step_impl(context, slugged_title):
     sleep(5)
     ca_po = CreateArticle(context.driver)
@@ -48,14 +56,15 @@ def step_impl(context, slugged_title):
 
     expect(expected).to(equal(result))
 
-@when(u'click on edit')
+
+@when("click on edit")
 def step_impl(context):
     sleep(5)
     ad_po = ArticleDetails(context.driver)
     ad_po.edit_button.click()
 
 
-@when(u'update the title to "{new_article_title}" and submit')
+@when('update the title to "{new_article_title}" and submit')
 def step_impl(context, new_article_title):
     sleep(5)
     ca_po = CreateArticle(context.driver)
@@ -64,14 +73,14 @@ def step_impl(context, new_article_title):
     ca_po.publish.click()
 
 
-@when(u'click on delete')
+@when("click on delete")
 def step_impl(context):
     sleep(5)
     ad_po = ArticleDetails(context.driver)
     ad_po.delete_button.click()
 
 
-@when(u'comment "{comment_content}" and submit')
+@when('comment "{comment_content}" and submit')
 def step_impl(context, comment_content):
     sleep(5)
     ad_po = ArticleDetails(context.driver)
@@ -79,7 +88,7 @@ def step_impl(context, comment_content):
     ad_po.comment_submit.click()
 
 
-@then(u'the delete comment button should be visible')
+@then("the delete comment button should be visible")
 def step_impl(context):
     sleep(5)
     ad_po = ArticleDetails(context.driver)
@@ -88,14 +97,14 @@ def step_impl(context):
     expect(expected).to(equal(result))
 
 
-@when(u'click on delete comment')
+@when("click on delete comment")
 def step_impl(context):
     sleep(5)
     ad_po = ArticleDetails(context.driver)
     ad_po.delete_comment.click()
 
 
-@then(u'the delete comment button should not be visible')
+@then("the delete comment button should not be visible")
 def step_impl(context):
     sleep(5)
     ad_po = ArticleDetails(context.driver)

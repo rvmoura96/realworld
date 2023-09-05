@@ -16,9 +16,12 @@ active_tag_matcher = ActiveTagMatcher(active_tag_value_provider)
 
 def before_all(context):
     context.userdata = context.config.userdata
-    context.config_0 = context.userdata.get('config_0', 'False')
-    context.server_url = context.userdata.get("server_url", "https://realworld.svelte.dev/")
+    context.config_0 = context.userdata.get("config_0", "False")
+    context.server_url = context.userdata.get(
+        "server_url", "https://realworld.svelte.dev/"
+    )
     context.debug = context.userdata.get("debug", "False")
+
 
 def before_feature(context, feature):
     ...
@@ -27,7 +30,7 @@ def before_feature(context, feature):
 def before_scenario(context, scenario):
     context.faker = Faker()
 
-    browser_name = context.userdata.get('browser', 'chrome')
+    browser_name = context.userdata.get("browser", "chrome")
 
     if browser_name == "chrome":
         context.driver = webdriver.Chrome(
