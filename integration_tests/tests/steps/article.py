@@ -28,7 +28,7 @@ def step_impl(context):
 
 @when("fill article fields with the given data and submit")
 def step_impl(context):
-    sleep(2)
+    sleep(5)
     ca_po = CreateArticle(context.driver)
     ca_po.title.send_keys(context.article["title"])
     ca_po.description.send_keys(context.article["description"])
@@ -39,7 +39,7 @@ def step_impl(context):
 
 @then('the current url should contains "{slugged_title}"')
 def step_impl(context, slugged_title):
-    sleep(2)
+    sleep(5)
     ca_po = CreateArticle(context.driver)
     result = slugged_title in ca_po.w.current_url
     expected = True

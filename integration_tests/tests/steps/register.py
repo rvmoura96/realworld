@@ -23,14 +23,14 @@ def step_impl(context):
 
 @when("click on sign up")
 def step_impl(context):
-    sleep(2)
+    sleep(5)
     home_po = Home(context.driver)
     home_po.sign_up.click()
 
 
 @when("the user form is filled with user data and submit")
 def step_impl(context):
-    sleep(2)
+    sleep(5)
     sign_up_po = SignUp(context.driver)
     sign_up_po.name.send_keys(context.user["first_name"])
     sign_up_po.email.send_keys(context.user["email"])
