@@ -7,7 +7,7 @@ from modules.auxiliar import cast_table_to_dict
 from pages_objects.pos import Home, Logged, SignUp
 
 
-@given("a user data")
+@given("an user data")
 def step_impl(context):
     context.user = {
         "first_name": f"{context.faker.name()}{context.faker.name()}",
@@ -29,8 +29,8 @@ def step_impl(context):
 
 @when("the user form is filled with user data and submit")
 def step_impl(context):
-    sign_up_po = SignUp(context.driver)
     sleep(2)
+    sign_up_po = SignUp(context.driver)
     sign_up_po.name.send_keys(context.user["first_name"])
     sign_up_po.email.send_keys(context.user["email"])
     sign_up_po.password.send_keys(context.user["password"])
@@ -46,3 +46,10 @@ def step_impl(context):
     result = logged_page.user_link.is_displayed()
     expect(expected).to(equal(result))
 
+@then(u'an error message should be showed')
+def step_impl(context):
+    sleep(5)
+    sign_up_po = SignUp(context.driver)
+    result = sign_up_po.error.is_displayed()
+    expected = True
+    expect(expected).to(equal(result))

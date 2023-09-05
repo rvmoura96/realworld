@@ -53,7 +53,7 @@ def after_tag(context, tag):
 
 
 def after_scenario(context, scenario):
-    ...
+    context.driver.quit()
 
 
 def after_feature(context, feature):

@@ -12,7 +12,7 @@ class SignUp(Home):
     email = PageElement(xpath="/html/body/div/main/div/div/div/div/form/fieldset[2]/input")
     password = PageElement(xpath="/html/body/div/main/div/div/div/div/form/fieldset[3]/input")
     submit = PageElement(xpath="/html/body/div/main/div/div/div/div/form/button")
-
+    error = PageElement(xpath="/html/body/div/main/div/div/div/div/ul")
 
 class Logged(PageObject):
     user_link = PageElement(xpath="/html/body/div/nav/div/ul/li[4]/a")
