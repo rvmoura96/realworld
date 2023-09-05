@@ -65,4 +65,3 @@ def after_feature(context, feature):
 
 def after_all(context):
     ...
-    # context.driver.quit()
