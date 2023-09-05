@@ -12,6 +12,6 @@ def cast_table_to_dict(context_table):
 
 
 def cast_table_with_one_column_to_list(context_table):
-    """Converte uma tabela com somente uma coluna em uma lista."""
+    """Cast a table with a single column into a list."""
     assert len(context_table.headings), "Tabela com mais de uma coluna"
     return [row[context_table.headings[0]] for row in context_table]
