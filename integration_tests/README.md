@@ -15,7 +15,7 @@ For the tests the chosen framework is [Behave](https://pypi.org/project/behave/)
 # How to run
 First, clone this repository using the following command:
 ```
-git clone 
+git clone https://github.com/rvmoura96/realworld.git
 ``
 
 Then enter into the project directory:
