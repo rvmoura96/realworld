@@ -2,9 +2,13 @@
 from behave.tag_matcher import ActiveTagMatcher
 from faker import Faker
 from ipdb import post_mortem
-from selenium import webdriver
+
+
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
+
+from selenium import webdriver
+
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
@@ -31,15 +35,21 @@ def before_scenario(context, scenario):
     context.faker = Faker()
 
     browser_name = context.userdata.get("browser", "chrome")
+    local_machine_ip = context.userdata.get('local_machine_ip', '192.168.15.19')
+    selenium_port =  context.userdata.get('selenium_hub_port', '4444')
+    command_executor = f"{local_machine_ip}:{selenium_port}/wd/hub"
+    context.options = {"addr": local_machine_ip}
 
     if browser_name == "chrome":
-        context.driver = webdriver.Chrome(
-            service=ChromeService(ChromeDriverManager().install())
-        )
+        options = webdriver.ChromeOptions()
     else:
-        context.driver = webdriver.Firefox(
-            service=FirefoxService(GeckoDriverManager().install())
-        )
+        options = webdriver.FirefoxOptions()
+
+    context.driver = webdriver.Remote(
+        command_executor=command_executor,
+        options=options,
+    )
+    
 
 
 def before_tag(context, tag):
