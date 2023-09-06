@@ -5,9 +5,9 @@ The dependencies manager used on this project is [Poetry](https://python-poetry.
 
 To choose which browser you'd like to run edit the value from browser on behave.ini, the available options are firefox or chrome.
 
-It was developed with Python 3.11.4.
+* It was developed with Python 3.11.4.
 
-And is required at least Python on version 3.11.
+* And is required at least Python on version 3.11.
 
 For the tests the chosen framework is [Behave](https://pypi.org/project/behave/) supported by [Selenium](https://pypi.org/project/selenium/) and [Expects](https://pypi.org/project/expects/) to a more readable assertion.
 
